@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * FORECAST FORGE — Design System Tokens
+ * Source of truth: DESIGN.md v1.0
+ * Theme: Dark-first, Forge Red (#E84040)
+ */
+
+@layer base {
+  :root {
+    /* ========================================
+     * BASE PALETTE (Dark Theme — DEFAULT)
+     * ======================================== */
+    --color-black:          #0A0A0B;
+    --color-surface-0:      #0F0F11;
+    --color-surface-1:      #161618;
+    --color-surface-2:      #1E1E21;
+    --color-surface-3:      #252528;
+    --color-surface-4:      #2E2E32;
+
+    --color-border-subtle:  #2A2A2E;
+    --color-border-default: #3A3A3F;
+    --color-border-strong:  #4A4A52;
+
+    --color-white:          #FFFFFF;
+    --color-white-90:       rgba(255,255,255,0.90);
+    --color-white-70:       rgba(255,255,255,0.70);
+    --color-white-50:       rgba(255,255,255,0.50);
+    --color-white-30:       rgba(255,255,255,0.30);
+    --color-white-10:       rgba(255,255,255,0.10);
+    --color-white-05:       rgba(255,255,255,0.05);
+
+    /* ========================================
+     * BRAND ACCENT — Forge Red
+     * ======================================== */
+    --color-accent-50:      #FFF1F0;
+    --color-accent-100:     #FFE0DD;
+    --color-accent-200:     #FFBDB8;
+    --color-accent-300:     #FF9089;
+    --color-accent-400:     #FF5C52;
+    --color-accent-500:     #E84040;
+    --color-accent-600:     #CC2E2E;
+    --color-accent-700:     #A82323;
+    --color-accent-800:     #861B1B;
+    --color-accent-900:     #5C0F0F;
+
+    /* ========================================
+     * SEMANTIC COLORS
+     * ======================================== */
+    --color-success-subtle:    #0F2A1A;
+    --color-success-muted:     #1A4A2E;
+    --color-success-default:   #22C55E;
+    --color-success-strong:    #4ADE80;
+
+    --color-warning-subtle:    #2A200A;
+    --color-warning-muted:     #4A380A;
+    --color-warning-default:   #F59E0B;
+    --color-warning-strong:    #FCD34D;
+
+    --color-error-subtle:      #2A0F0F;
+    --color-error-muted:       #4A1A1A;
+    --color-error-default:     #EF4444;
+    --color-error-strong:      #F87171;
+
+    --color-info-subtle:       #0A1A2A;
+    --color-info-muted:        #0F2A4A;
+    --color-info-default:      #3B82F6;
+    --color-info-strong:       #60A5FA;
+
+    /* ========================================
+     * TEXT COLORS
+     * ======================================== */
+    --color-text-primary:      #F4F4F5;
+    --color-text-secondary:    #A1A1AA;
+    --color-text-tertiary:     #71717A;
+    --color-text-disabled:     #52525B;
+    --color-text-inverse:      #09090B;
+    --color-text-accent:       #FF5C52;
+
+    /* ========================================
+     * CHART & DATA VIZ COLORS
+     * ======================================== */
+    --chart-1:   #E84040;
+    --chart-2:   #3B82F6;
+    --chart-3:   #22C55E;
+    --chart-4:   #F59E0B;
+    --chart-5:   #A855F7;
+    --chart-6:   #06B6D4;
+    --chart-7:   #F97316;
+    --chart-8:   #EC4899;
+
+    --forecast-actual:        #F4F4F5;
+    --forecast-predicted:     #E84040;
+    --forecast-confidence-95: rgba(232, 64, 64, 0.12);
+    --forecast-confidence-80: rgba(232, 64, 64, 0.22);
+    --forecast-trend-up:      #22C55E;
+    --forecast-trend-down:    #EF4444;
+    --forecast-trend-neutral: #71717A;
+    --forecast-annotation:    #F59E0B;
+
+    --heatmap-strong-positive:  #E84040;
+    --heatmap-mild-positive:    rgba(232, 64, 64, 0.50);
+    --heatmap-neutral:          #2E2E32;
+    --heatmap-mild-negative:    rgba(59, 130, 246, 0.50);
+    --heatmap-strong-negative:  #3B82F6;
+    --heatmap-diagonal:         #52525B;
+
+    --importance-high:    #E84040;
+    --importance-medium:  #F59E0B;
+    --importance-low:     #71717A;
+    --importance-bar-bg:  #2A2A2E;
+
+    --model-best:       #22C55E;
+    --model-second:     #F59E0B;
+    --model-third:      #71717A;
+    --model-row-best:   rgba(34, 197, 94, 0.08);
+
+    --chart-grid:       rgba(255,255,255,0.06);
+    --chart-axis:       rgba(255,255,255,0.15);
+    --chart-axis-label: #71717A;
+    --chart-tooltip-bg: #1E1E21;
+    --chart-tooltip-border: #3A3A3F;
+
+    /* ========================================
+     * TYPOGRAPHY
+     * ======================================== */
+    --font-sans:    'Inter', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono:    'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+    --font-display: 'Inter', sans-serif;
+
+    /* ========================================
+     * SPACING
+     * ======================================== */
+    --space-0:    0px;
+    --space-1:    4px;
+    --space-2:    8px;
+    --space-3:    12px;
+    --space-4:    16px;
+    --space-5:    20px;
+    --space-6:    24px;
+    --space-8:    32px;
+    --space-10:   40px;
+    --space-12:   48px;
+    --space-16:   64px;
+    --space-20:   80px;
+    --space-24:   96px;
+    --space-32:   128px;
+
+    /* ========================================
+     * RADIUS
+     * ======================================== */
+    --radius-none:   0px;
+    --radius-sm:     4px;
+    --radius-md:     6px;
+    --radius-lg:     8px;
+    --radius-xl:     12px;
+    --radius-2xl:    16px;
+    --radius-full:   9999px;
+
+    /* ========================================
+     * ELEVATION / SHADOWS
+     * ======================================== */
+    --shadow-none:   none;
+    --shadow-sm:     0 1px 2px rgba(0,0,0,0.4);
+    --shadow-md:     0 4px 12px rgba(0,0,0,0.5);
+    --shadow-lg:     0 8px 24px rgba(0,0,0,0.6);
+    --shadow-xl:     0 16px 48px rgba(0,0,0,0.7);
+    --shadow-accent: 0 0 0 1px rgba(232,64,64,0.4);
+    --shadow-focus:  0 0 0 2px rgba(232,64,64,0.6);
+
+    /* ========================================
+     * MOTION
+     * ======================================== */
+    --duration-instant:  0ms;
+    --duration-fast:     100ms;
+    --duration-normal:   200ms;
+    --duration-slow:     350ms;
+    --duration-slower:   500ms;
+
+    --ease-default:      cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in:           cubic-bezier(0.4, 0, 1, 1);
+    --ease-out:          cubic-bezier(0, 0, 0.2, 1);
+    --ease-spring:       cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* ========================================
+     * LAYOUT
+     * ======================================== */
+    --layout-sidebar-width:         240px;
+    --layout-sidebar-collapsed:     64px;
+    --layout-topbar-height:         56px;
+    --layout-content-max-width:     1280px;
+    --layout-content-padding:       32px;
+    --layout-card-grid-gap:         16px;
+    --layout-section-gap:           48px;
+
+    /* ========================================
+     * SHADCN VARIABLE MAPPING
+     * Maps shadcn/ui CSS variables to DESIGN.md tokens
+     * ======================================== */
+    --background: 240 6% 7%;          /* --color-surface-0: #0F0F11 */
+    --foreground: 240 5% 96%;         /* --color-text-primary: #F4F4F5 */
+
+    --card: 240 5% 9%;                /* --color-surface-1: #161618 */
+    --card-foreground: 240 5% 96%;
+
+    --popover: 240 4% 12%;            /* --color-surface-2: #1E1E21 */
+    --popover-foreground: 240 5% 96%;
+
+    --primary: 0 77% 58%;             /* --color-accent-500: #E84040 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 4% 14%;          /* --color-surface-3: #252528 */
+    --secondary-foreground: 240 5% 96%;
+
+    --muted: 240 4% 14%;              /* --color-surface-3 */
+    --muted-foreground: 240 4% 64%;   /* --color-text-secondary: #A1A1AA */
+
+    --accent: 0 77% 58%;              /* --color-accent-500 */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;         /* --color-error-default: #EF4444 */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5% 24%;             /* --color-border-default: #3A3A3F */
+    --input: 240 4% 19%;              /* --color-surface-4: #2E2E32 */
+    --ring: 0 77% 58%;                /* --color-accent-500 */
+
+    --radius: 0.375rem;               /* --radius-md: 6px */
+
+    /* Sidebar shadcn mapping */
+    --sidebar-background: 240 5% 9%;
+    --sidebar-foreground: 240 5% 96%;
+    --sidebar-primary: 0 77% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 77% 58%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 240 6% 17%;
+    --sidebar-ring: 0 77% 58%;
+
+    /* Chart shadcn mapping */
+    --chart-1-hsl: 0 77% 58%;
+    --chart-2-hsl: 217 91% 60%;
+    --chart-3-hsl: 142 71% 45%;
+    --chart-4-hsl: 38 92% 50%;
+    --chart-5-hsl: 270 91% 65%;
+  }
+}
+
+/* ========================================
+ * BASE STYLES
+ * ======================================== */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply text-foreground;
+    background-color: var(--color-surface-0);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    line-height: 1.6;
+  }
+
+  /* Scrollbar styling for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-surface-0);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border-default);
+    border-radius: var(--radius-full);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-strong);
+  }
+
+  /* Focus ring — global */
+  *:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+/* ========================================
+ * UTILITY CLASSES
+ * ======================================== */
+@layer utilities {
+  /* Monospace numeric display — DESIGN.md rule: ALL metrics use font-mono */
+  .font-mono-metric {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  /* Label uppercase style */
+  .label-uppercase {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+  }
+
+  /* AI content left border */
+  .ai-border {
+    border-left: 3px solid var(--color-accent-500);
+    background: rgba(232, 64, 64, 0.03);
+  }
+
+  /* Chart grid line style */
+  .chart-grid-line {
+    stroke: var(--chart-grid);
+    stroke-width: 1;
+  }
+}
+
+/* ========================================
+ * ANIMATIONS
+ * ======================================== */
+@keyframes shimmer {
+  0% { background-position: -400% 0; }
+  100% { background-position: 400% 0; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-border {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes progress-fill {
+  from { width: 0%; }
+}
+
+/* Skeleton shimmer */
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-2) 0%,
+    var(--color-surface-3) 50%,
+    var(--color-surface-2) 100%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* AI processing pulse */
+.ai-pulse {
+  animation: pulse-border 1000ms ease-in-out infinite;
+}
+
+/* Entrance animations */
+.animate-fade-in {
+  animation: fade-in 200ms var(--ease-default) forwards;
+}
+
+.animate-slide-in {
+  animation: slide-in-right 200ms var(--ease-default) forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 200ms var(--ease-default) forwards;
+}
