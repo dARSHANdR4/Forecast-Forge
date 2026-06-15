@@ -2,7 +2,7 @@
 
 # 🔥 Forecast Forge
 
-<img src="./docs/assets/app-hero-banner.png" alt="Forecast Forge Hero Banner" width="100%">
+<img src="./docs/assets/app-hero-banner-v2.png" alt="Forecast Forge Hero Banner" width="100%">
 
 **AI-powered, no-code forecasting platform**  
 Go from raw CSV to real ML predictions without writing a single line of code.  
@@ -32,17 +32,17 @@ Forecast Forge democratizes data science. It is a fully client-side application 
 
 | Dashboard | Upload & Explore |
 |:---:|:---:|
-| <img src="./docs/assets/app-dashboard.png" width="400" alt="Dashboard View"> | <img src="./docs/assets/app-explore.png" width="400" alt="Data Exploration View"> |
+| <img src="./docs/assets/app-dashboard-v2.png" width="400" alt="Dashboard View"> | <img src="./docs/assets/app-explore-v2.png" width="400" alt="Data Exploration View"> |
 | **Welcome screen and metrics overview** | **Data distribution and correlation heatmaps** |
 
 | Data Cleaning | Model Training |
 |:---:|:---:|
-| <img src="./docs/assets/app-clean.png" width="400" alt="Data Cleaning View"> | <img src="./docs/assets/app-train.png" width="400" alt="Model Training View"> |
+| <img src="./docs/assets/app-clean-v2.png" width="400" alt="Data Cleaning View"> | <img src="./docs/assets/app-train-v2.png" width="400" alt="Model Training View"> |
 | **One-click outlier and missing value fixes** | **Live training of 5 ML algorithms** |
 
 | Model Comparison | Forecasting Results |
 |:---:|:---:|
-| <img src="./docs/assets/app-compare.png" width="400" alt="Model Comparison View"> | <img src="./docs/assets/app-predict.png" width="400" alt="Forecasting View"> |
+| <img src="./docs/assets/app-compare-v2.png" width="400" alt="Model Comparison View"> | <img src="./docs/assets/app-predict-v2.png" width="400" alt="Forecasting View"> |
 | **Side-by-side performance and feature importance** | **Predictions with 95% confidence intervals** |
 
 ---
