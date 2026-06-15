@@ -2,7 +2,7 @@
 
 # 🔥 Forecast Forge
 
-<img src="./docs/assets/hero-banner.png" alt="Forecast Forge Hero Banner" width="100%">
+<img src="./docs/assets/app-hero-banner.png" alt="Forecast Forge Hero Banner" width="100%">
 
 **AI-powered, no-code forecasting platform**  
 Go from raw CSV to real ML predictions without writing a single line of code.  
