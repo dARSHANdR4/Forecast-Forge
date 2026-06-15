@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { TrendingUp, Sparkles } from 'lucide-react';
+import { TrendingUp, Sparkles, Table } from 'lucide-react';
 import { WizardStepper } from '@/components/app/wizard-stepper';
 import { PredictionCard } from '@/components/app/prediction-card';
 import { ChartContainer } from '@/components/app/chart-container';
@@ -50,7 +50,11 @@ export default function PredictPage() {
         numericValues
       );
 
-      setLastPrediction(result);
+      setLastPrediction({
+        value: result.prediction,
+        lower95: result.lower95,
+        upper95: result.upper95
+      });
 
       // Save prediction
       dispatch({
@@ -191,14 +195,24 @@ export default function PredictPage() {
         </div>
       </ChartContainer>
 
-      {/* Predict button */}
-      <Button
-        onClick={handlePredict}
-        className="w-full bg-[var(--color-accent-500)] hover:bg-[var(--color-accent-600)] text-white gap-2 py-3 text-base"
-      >
-        <TrendingUp className="w-5 h-5" />
-        Generate Prediction
-      </Button>
+      {/* Action buttons */}
+      <div className="flex flex-col sm:flex-row gap-4">
+        <Button
+          onClick={handlePredict}
+          className="flex-1 bg-[var(--color-accent-500)] hover:bg-[var(--color-accent-600)] text-white gap-2 py-3 text-base"
+        >
+          <TrendingUp className="w-5 h-5" />
+          Generate Single Prediction
+        </Button>
+        <Button
+          onClick={() => router.push('/results')}
+          variant="outline"
+          className="flex-1 gap-2 py-3 text-base border-[var(--color-border-strong)] text-[var(--color-text-primary)] hover:bg-[var(--color-surface-3)]"
+        >
+          <Table className="w-5 h-5" />
+          View Batch Results & Export
+        </Button>
+      </div>
 
       {/* Prediction result */}
       {lastPrediction && (

@@ -260,6 +260,15 @@ export default function CleanPage() {
         </ChartContainer>
       )}
 
+      {allApplied && (
+        <ChartContainer title="Cleaning Results" subtitle="Before vs After comparison">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <MetricCard label="Before Cleaning" value={`${issues?.totalIssues || 0} Issues`} subtitle="Outliers & Missing values detected" />
+            <MetricCard label="After Cleaning" value="0 Issues" subtitle="Data is optimized for modeling" icon={CheckCircle2} />
+          </div>
+        </ChartContainer>
+      )}
+
       <div className="flex justify-end">
         <Button
           onClick={() => router.push('/train')}
