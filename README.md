@@ -1,31 +1,192 @@
+<div align="center">
+
 # 🔥 Forecast Forge
 
-**AI-powered, no-code forecasting platform** — go from raw CSV to real ML predictions without writing a single line of code. Everything runs in your browser.
+<img src="./docs/assets/hero-banner.png" alt="Forecast Forge Hero Banner" width="100%">
 
-[![Next.js](https://img.shields.io/badge/Next.js-15.2-black?logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+**AI-powered, no-code forecasting platform**  
+Go from raw CSV to real ML predictions without writing a single line of code.  
+Everything runs securely in your browser.
+
+[![Next.js](https://img.shields.io/badge/Next.js-15.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Machine Learning](https://img.shields.io/badge/ML_Engine-Pure_TypeScript-E84040?style=for-the-badge&logo=codeigniter&logoColor=white)](#)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+
+[Features](#-feature-showcase) • [Architecture](#%EF%B8%8F-architecture) • [Workflow](#-application-flow) • [Screenshots](#-screenshots--preview) • [PRD](./docs/01-PRD.md) • [TRD](./docs/03-TRD.md) • [UI/UX](./docs/02-UX-FLOW.md) • [Sprint Plan](./docs/05-SPRINT-PLAN.md)
+
+</div>
 
 ---
 
-## ✨ What Is Forecast Forge?
+## 🎮 What Is Forecast Forge?
 
-Forecast Forge is a browser-based machine learning platform that democratizes data science for non-technical users. Upload a CSV, explore your data, clean it, train 5 real ML algorithms, compare results, and generate predictions — all through a guided wizard interface.
+Forecast Forge democratizes data science. It is a fully client-side application that transforms raw datasets into actionable predictive models. Instead of wrestling with Pandas scripts or Python environments, you get a beautiful, guided UI to explore data, handle outliers, train algorithms, and forecast the future.
 
-**No Python. No APIs. No setup. Just predictions.**
+> No Python. No external APIs. No server-side processing. 100% of the Machine Learning engine runs locally in your browser.
 
-### Key Features
+---
 
-| Feature | Description |
-|---------|------------|
-| 📤 **CSV Upload** | Drag-and-drop with automatic column analysis and type detection |
-| 📊 **Data Exploration** | Per-column statistics, histograms, correlation heatmap |
-| 🧹 **Auto Cleaning** | Missing value handling (5 strategies), outlier detection (Z-score/IQR), categorical encoding |
-| 🧠 **5 Real ML Algorithms** | Linear Regression, Decision Tree (CART), Random Forest, KNN, SVM — all pure TypeScript |
-| 🏆 **Model Comparison** | Side-by-side metrics table with auto-ranking |
-| 🎯 **Predictions** | Single prediction with confidence intervals, model selector, prediction history |
-| 🌙 **Dark-First Design** | Premium dark theme with Forge Red (#E84040) accent |
+## 📸 Screenshots & Preview
+
+| Dashboard | Upload & Explore |
+|:---:|:---:|
+| <img src="./docs/assets/dashboard.png" width="400" alt="Dashboard View"> | <img src="./docs/assets/explore.png" width="400" alt="Data Exploration View"> |
+| **Welcome screen and metrics overview** | **Data distribution and correlation heatmaps** |
+
+| Data Cleaning | Model Training |
+|:---:|:---:|
+| <img src="./docs/assets/clean.png" width="400" alt="Data Cleaning View"> | <img src="./docs/assets/train.png" width="400" alt="Model Training View"> |
+| **One-click outlier and missing value fixes** | **Live training of 5 ML algorithms** |
+
+| Model Comparison | Forecasting Results |
+|:---:|:---:|
+| <img src="./docs/assets/compare.png" width="400" alt="Model Comparison View"> | <img src="./docs/assets/predict.png" width="400" alt="Forecasting View"> |
+| **Side-by-side performance and feature importance** | **Predictions with 95% confidence intervals** |
+
+---
+
+## 🏗️ Architecture
+
+Forecast Forge separates the interface from the heavy mathematical lifting, maintaining high performance while operating entirely on the client side.
+
+```mermaid
+graph TD
+    classDef default fill:#1E1E24,stroke:#4A4A5A,stroke-width:2px,color:#fff;
+    classDef highlight fill:#E84040,stroke:#FF6B6B,stroke-width:2px,color:#fff,font-weight:bold;
+    classDef layer fill:#2A2A35,stroke:#4A4A5A,stroke-width:1px,color:#E0E0E0;
+
+    subgraph Client ["Frontend Interface (Next.js)"]
+        UI[Dashboard & Wizard UI]
+        State[React Context App Store]
+    end
+
+    subgraph DataLayer ["Data Processing Layer"]
+        Parse[CSV Parser]
+        EDA[Exploratory Data Analysis]
+        Clean[Missing Value & Outlier Handling]
+    end
+
+    subgraph MLEngine ["Machine Learning Engine (Pure TS)"]
+        Reg[Regression Models<br/>LR, DT, RF, KNN, SVM]
+        Class[Classification Models<br/>DT, RF, KNN, SVM]
+        Eval[Metrics & Validation]
+    end
+
+    subgraph PredictionLayer ["Forecasting Layer"]
+        Infer[Inference Engine]
+        Conf[Confidence Intervals]
+    end
+
+    UI -->|File Upload| Parse
+    Parse --> EDA
+    EDA --> Clean
+    Clean -->|Cleaned Data| State
+    State -->|Target & Features| MLEngine
+    MLEngine -->|Trained Models| Eval
+    Eval -->|Ranked Models| State
+    State -->|Selected Model| Infer
+    Infer --> Conf
+    Conf -->|Prediction Output| UI
+
+    class MLEngine highlight;
+    class Client,DataLayer,PredictionLayer layer;
+```
+
+---
+
+## 🔄 Application Flow
+
+The entire experience is built around a linear, foolproof 6-step workflow designed for non-technical users.
+
+```mermaid
+flowchart LR
+    classDef step fill:#2A2A35,stroke:#E84040,stroke-width:2px,color:#fff,border-radius:8px;
+    
+    1((📤)):::step -->|Upload CSV| 2((📊)):::step
+    2 -->|Explore Stats| 3((🧹)):::step
+    3 -->|Auto-Clean| 4((🧠)):::step
+    4 -->|Train 5 Models| 5((🏆)):::step
+    5 -->|Compare Metrics| 6((🎯)):::step
+    
+    click 1 href "#-feature-showcase" "Upload"
+    click 2 href "#-feature-showcase" "Explore"
+    click 3 href "#-feature-showcase" "Clean"
+    click 4 href "#-feature-showcase" "Train"
+    click 5 href "#-feature-showcase" "Compare"
+    click 6 href "#-feature-showcase" "Predict"
+    
+    style 1 fill:#1A1A24
+    style 2 fill:#1A1A24
+    style 3 fill:#1A1A24
+    style 4 fill:#1A1A24
+    style 5 fill:#1A1A24
+    style 6 fill:#1A1A24
+```
+
+---
+
+## ✨ Feature Showcase
+
+### 📤 Upload CSV & Auto-Detect
+Drag and drop datasets up to 20MB. The engine automatically parses headers, detects data types, and intelligently suggests prediction targets based on data distributions.
+
+---
+
+### 📊 Data Exploration & Heatmaps
+Visualize your data before training. View per-column distributions, value counts, missing percentages, and a beautiful correlation matrix heatmap to spot feature dependencies.
+
+---
+
+### 🧹 One-Click Data Cleaning
+Say goodbye to manual Pandas scripts. Automatically detect outliers via Z-scores and handle missing values using mean, median, mode, or drop strategies—all with a single click.
+
+---
+
+### 🧠 Pure TypeScript ML Engine
+Train 5 real machine learning algorithms directly in your browser without any backend:
+- Linear Regression (Gauss-Jordan OLS)
+- Decision Trees (CART with MSE/Gini)
+- Random Forests (30-tree bagged ensemble)
+- K-Nearest Neighbors (Euclidean inverse-distance)
+- Support Vector Machines (Pegasos-style SGD)
+
+---
+
+### 🏆 Model Comparison & Analytics
+Compare model performance side-by-side. Track R², RMSE, Accuracy, and F1 Scores. Dive deeper with actual vs. predicted scatter plots, residual error distributions, and feature importance rankings.
+
+---
+
+### 🎯 Forecasting & Confidence Intervals
+Select the winning model and input new data to generate instant predictions. View outputs complete with 95% confidence intervals and historical prediction logging.
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend Framework**  
+Built on **Next.js 15** (App Router, Turbopack) using **React 19** and strictly typed **TypeScript 5**. State management handles the workflow natively using React Context and `useReducer`.
+
+**Design & UI**  
+A premium dark-first interface styled with **Tailwind CSS 3.4**, utilizing **shadcn/ui** primitives, **Lucide React** icons, and rich visualizations powered by **Recharts 2.15**.
+
+**Machine Learning Engine**  
+A 100% custom, zero-dependency engine written in TypeScript. All algorithms, matrix operations, and metrics calculations run directly in the V8 browser engine.
+
+---
+
+## 📚 Documentation Hub
+
+To explore the product specs, architecture, and design decisions behind Forecast Forge, refer to the detailed documentation:
+
+- 📑 [Product Requirements Document (PRD)](./docs/01-PRD.md)
+- 🎨 [UI/UX & Application Flow](./docs/02-UX-FLOW.md)
+- 🏗️ [Technical Requirements Document (TRD)](./docs/03-TRD.md)
+- 🤖 [Agent Orchestration Prompt](./docs/04-AGENT-PROMPT.md)
+- 📅 [Sprint Plan & Roadmap](./docs/05-SPRINT-PLAN.md)
+- 💅 [Design System (DESIGN.md)](../DESIGN.md)
 
 ---
 
@@ -35,7 +196,7 @@ Forecast Forge is a browser-based machine learning platform that democratizes da
 - **Node.js** 18.x or later
 - **npm** 9.x or later
 
-### Installation
+### Installation & Local Run
 
 ```bash
 # Clone the repository
@@ -45,177 +206,30 @@ cd Forecast-Forge
 # Install dependencies
 npm install
 
-# Start development server
+# Start the development server
 npm run dev
 ```
 
-The app will be running at **http://localhost:9002**
+The application will be running at **http://localhost:9002** (or your default Next.js port). A sample dataset `test-iris.csv` is included in the `/public` folder for immediate testing.
 
-### Build for Production
+### Deployment
 
-```bash
-npm run build
-npm start
-```
-
----
-
-## 📋 Guided Workflow
-
-Forecast Forge follows a 6-step wizard flow:
-
-```
-Upload → Explore → Clean → Train → Compare → Predict
-```
-
-1. **Upload** — Drop a CSV file (up to 20MB). The engine automatically analyzes columns and suggests target/features.
-2. **Explore** — View per-column statistics, distribution histograms, and a correlation heatmap.
-3. **Clean** — Auto-detect missing values and outliers. Apply fixes with one click.
-4. **Train** — Select target and features, then train all 5 algorithms with real-time progress.
-5. **Compare** — Side-by-side metrics table, actual-vs-predicted scatter, residual distribution, feature importance.
-6. **Predict** — Enter values, select any trained model, get predictions with 95% confidence intervals.
-
----
-
-## 🧠 ML Algorithms
-
-All algorithms are implemented in **pure TypeScript** — no external ML libraries.
-
-| Algorithm | Type | Method |
-|-----------|------|--------|
-| **Linear Regression** | Regression | OLS via Normal Equation (Gauss-Jordan) |
-| **Decision Tree** | Regression & Classification | CART with MSE/Gini splits |
-| **Random Forest** | Regression & Classification | 30-tree bagged CART ensemble |
-| **K-Nearest Neighbors** | Regression & Classification | Euclidean distance, inverse-distance weighting |
-| **Support Vector Machine** | Regression & Classification | Pegasos-style SGD, linear kernel |
-
-### Metrics
-
-- **Regression**: R², RMSE, MAE, MSE
-- **Classification**: Accuracy, Precision, Recall, F1 Score, Confusion Matrix
-- **Feature Importance**: Coefficient-based (LR/SVM), split-gain (DT/RF)
-- **Confidence Intervals**: Per-tree variance (Random Forest)
-
----
-
-## 🏗️ Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| **Framework** | Next.js 15 (App Router, Turbopack) |
-| **Language** | TypeScript 5 |
-| **Styling** | Tailwind CSS 3.4 + shadcn/ui components |
-| **Icons** | Lucide React |
-| **Charts** | Recharts 2.15 |
-| **State** | React Context + useReducer |
-| **ML Engine** | Custom TypeScript (5 algorithms) |
-| **Deployment** | Vercel-ready |
-
----
-
-## 📁 Project Structure
-
-```
-src/
-├── app/
-│   ├── globals.css           # Design system tokens
-│   ├── layout.tsx            # Shell: sidebar + topbar
-│   ├── page.tsx              # Dashboard
-│   ├── upload/page.tsx       # Step 1: Upload
-│   ├── explore/page.tsx      # Step 2: Explore
-│   ├── clean/page.tsx        # Step 3: Clean
-│   ├── train/page.tsx        # Step 4: Train
-│   ├── compare/page.tsx      # Step 5: Compare
-│   └── predict/page.tsx      # Step 6: Predict
-├── components/
-│   ├── app/                  # Domain components (15 files)
-│   └── ui/                   # shadcn primitives (33 files)
-├── lib/
-│   ├── ml-algorithms/        # 5 algorithm implementations
-│   ├── ml-service.ts         # Training orchestrator
-│   ├── statistics.ts         # Core math functions
-│   ├── data-analysis.ts      # EDA utilities
-│   └── data-cleaning.ts      # Cleaning pipeline
-└── store/
-    └── app-store.tsx         # Global state management
-```
-
----
-
-## 🎨 Design System
-
-Dark-first design with the **Forge Red** palette:
-
-- **Primary Surface**: `#0F0F11` (deep dark)
-- **Accent**: `#E84040` (Forge Red)
-- **Typography**: Inter (UI) + JetBrains Mono (metrics)
-- **Chart Colors**: 8-color palette optimized for dark backgrounds
-- **Components**: 15+ custom components following the design specification
-
----
-
-## 📊 Sample Datasets
-
-Place CSV files in the `/public` directory for easy access. The app includes a test dataset:
-- `test-iris.csv` — 150 samples, 4 features, 3 classes (classification)
-
----
-
-## 🧪 Development
+Forecast Forge is completely static/client-side and highly optimized for Vercel.
 
 ```bash
-# Type checking
-npm run typecheck
-
-# Linting
-npm run lint
-
-# Build verification
-npm run build
-```
-
----
-
-## 📄 Documentation
-
-Detailed project documentation is in the `/docs` directory:
-
-| Document | Description |
-|----------|------------|
-| `01-PRD.md` | Product Requirements Document |
-| `02-UX-FLOW.md` | User Experience Flow |
-| `03-TRD.md` | Technical Requirements Document |
-| `04-AGENT-PROMPT.md` | AI Agent Orchestration Prompt |
-| `05-SPRINT-PLAN.md` | Sprint Plan & Feature Matrix |
-
----
-
-## 🚢 Deployment
-
-### Vercel (Recommended)
-
-```bash
-# Install Vercel CLI
 npm i -g vercel
-
-# Deploy
 vercel
 ```
 
-Or connect your GitHub repo to Vercel for automatic deployments.
-
 ---
 
-## 📝 License
-
-This project is licensed under the MIT License.
-
----
-
-## 🤝 Author
+## 🤝 Author & License
 
 **Darshan DR** — [@dARSHANdR4](https://github.com/dARSHANdR4)
 
----
+This project is licensed under the MIT License.
 
-*Built with ❤️ and TypeScript. No Math.random() was harmed in the making of these predictions.*
+<div align="center">
+  <br />
+  <i>Built with ❤️ and TypeScript. No Math.random() was harmed in the making of these predictions.</i>
+</div>
