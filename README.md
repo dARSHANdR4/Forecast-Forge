@@ -233,3 +233,10 @@ This project is licensed under the MIT License.
   <br />
   <i>Built with ❤️ and TypeScript. No Math.random() was harmed in the making of these predictions.</i>
 </div>
+
+
+## Copyright and permissions
+
+Copyright © 2026 dARSHANdR4. All rights reserved.
+
+Unless otherwise stated, original project code and assets are reserved and no open-source licence is granted. Third-party materials remain subject to their respective licences. See [COPYRIGHT](./COPYRIGHT) for the full notice.
