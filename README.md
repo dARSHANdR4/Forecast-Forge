@@ -12,7 +12,6 @@ Everything runs securely in your browser.
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Machine Learning](https://img.shields.io/badge/ML_Engine-Pure_TypeScript-E84040?style=for-the-badge&logo=codeigniter&logoColor=white)](#)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 [Features](#-feature-showcase) • [Architecture](#%EF%B8%8F-architecture) • [Workflow](#-application-flow) • [Screenshots](#-screenshots--preview) • [PRD](./docs/01-PRD.md) • [TRD](./docs/03-TRD.md) • [UI/UX](./docs/02-UX-FLOW.md) • [Sprint Plan](./docs/05-SPRINT-PLAN.md)
 
@@ -226,8 +225,6 @@ vercel
 ## 🤝 Author & License
 
 **Darshan DR** — [@dARSHANdR4](https://github.com/dARSHANdR4)
-
-This project is licensed under the MIT License.
 
 <div align="center">
   <br />
